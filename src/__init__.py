@@ -1,6 +1,11 @@
-from src.app import create_app
+from flask import Flask
 
-app = create_app()
+from src.fuel.controller import fuel_api
 
-if __name__ == "__main__":
-    app.run()
+
+def create_app() -> Flask:
+    app = Flask("FuelAPI")
+
+    app.register_blueprint(fuel_api)
+
+    return app
